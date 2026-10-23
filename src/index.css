@@ -1,0 +1,245 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/inter';
+
+/*
+ * Design tokens reverse-engineered from x.com (abs.twimg.com/x-web/x-web/assets/styles-*.css,
+ * tailwindcss v4.3.3). See docs/x-reverse.md. Values are copied as-is; names keep X's
+ * `--x-*` prefix so they can be diffed against future captures.
+ */
+:root,
+[data-theme='light'] {
+  color-scheme: light;
+  --x-bg-primary: #fff;
+  --x-bg-secondary: #f2f2f2; /* neutral-000 */
+  --x-bg-tertiary: #ebebeb; /* neutral-050 */
+  --x-bg-modal: #fff;
+  --x-bg-inputs: #0000000a; /* black-04 */
+  --x-bg-elevated: #fff;
+  --x-fg-primary: #000;
+  --x-fg-secondary: #0009; /* black-60 */
+  --x-fg-tertiary: #0000004d; /* black-30 */
+  --x-fg-inverted: #fff;
+  --x-fg-brand: #1d9bf0; /* blue-500 */
+  --x-border-normal: #00000026; /* black-15 */
+  --x-border-divider: #0000000f; /* black-06 */
+  --x-border-hover: #0003;
+  --x-btn-primary: #000;
+  --x-btn-primary-hover: #000c;
+  --x-btn-primary-pressed: #000000b3;
+  --x-btn-secondary: #ebebeb;
+  --x-btn-secondary-hover: #d9d9d9;
+  --x-btn-ghost-hover: #0000000a;
+  --x-btn-ghost-pressed: #00000026;
+  --x-btn-brand: #1d9bf0;
+  --x-btn-brand-hover: #0083eb;
+  --x-hover-subtle: #0000000a;
+  --x-hover-faint: #00000008;
+  --x-overlay: #0006;
+  --x-header-blur: #ffffffd9; /* bg-alpha-85 */
+  --x-tooltip-bg: #333;
+  --x-shadow-popup: 0 4px 20px #00000014, 0 0 0 1px #0000000f;
+  --x-bubble-in: #ebebeb;
+}
+
+:root[data-theme='dark'],
+[data-theme='dark'] {
+  color-scheme: dark;
+  --x-bg-primary: #000;
+  --x-bg-secondary: #141414; /* neutral-1000 */
+  --x-bg-tertiary: #262626; /* neutral-900 */
+  --x-bg-modal: #141414;
+  --x-bg-inputs: #ffffff14; /* white-08 */
+  --x-bg-elevated: #000;
+  --x-fg-primary: #fff;
+  --x-fg-secondary: #fff9; /* white-60 */
+  --x-fg-tertiary: #ffffff4d; /* white-30 */
+  --x-fg-inverted: #000;
+  --x-fg-brand: #1d9bf0;
+  --x-border-normal: #ffffff26; /* white-15 */
+  --x-border-divider: #fff3; /* white-20 */
+  --x-border-hover: #fff3;
+  --x-btn-primary: #fff;
+  --x-btn-primary-hover: #fffc;
+  --x-btn-primary-pressed: #ffffffb3;
+  --x-btn-secondary: #262626;
+  --x-btn-secondary-hover: #333;
+  --x-btn-ghost-hover: #ffffff14;
+  --x-btn-ghost-pressed: #ffffff26;
+  --x-btn-brand: #1d9bf0;
+  --x-btn-brand-hover: #43b3f6;
+  --x-hover-subtle: #ffffff14;
+  --x-hover-faint: #ffffff08;
+  --x-overlay: #ffffff26;
+  --x-header-blur: #000000a6;
+  --x-tooltip-bg: #b2b2b2;
+  --x-shadow-popup: 0 4px 20px #0006, 0 0 0 1px #ffffff26;
+  --x-bubble-in: #262626;
+}
+
+@theme inline {
+  --font-sans: TwitterChirp, 'Inter Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif;
+
+  /* foreground: text-primary / text-secondary / text-tertiary / text-brand / text-inverted */
+  --color-primary: var(--x-fg-primary);
+  --color-secondary: var(--x-fg-secondary);
+  --color-tertiary: var(--x-fg-tertiary);
+  --color-brand: var(--x-fg-brand);
+  --color-inverted: var(--x-fg-inverted);
+
+  /* backgrounds: bg-surface / bg-surface-2 / bg-surface-3 */
+  --color-surface: var(--x-bg-primary);
+  --color-surface-2: var(--x-bg-secondary);
+  --color-surface-3: var(--x-bg-tertiary);
+  --color-modal: var(--x-bg-modal);
+  --color-inputs: var(--x-bg-inputs);
+  --color-elevated: var(--x-bg-elevated);
+  --color-overlay: var(--x-overlay);
+  --color-header: var(--x-header-blur);
+  --color-bubble-in: var(--x-bubble-in);
+
+  /* borders: border-normal / border-divider */
+  --color-normal: var(--x-border-normal);
+  --color-divider: var(--x-border-divider);
+
+  --color-btn-primary: var(--x-btn-primary);
+  --color-btn-primary-hover: var(--x-btn-primary-hover);
+  --color-btn-primary-pressed: var(--x-btn-primary-pressed);
+  --color-btn-secondary: var(--x-btn-secondary);
+  --color-btn-secondary-hover: var(--x-btn-secondary-hover);
+  --color-btn-ghost-hover: var(--x-btn-ghost-hover);
+  --color-btn-ghost-pressed: var(--x-btn-ghost-pressed);
+  --color-btn-brand: var(--x-btn-brand);
+  --color-btn-brand-hover: var(--x-btn-brand-hover);
+  --color-hover-subtle: var(--x-hover-subtle);
+  --color-hover-faint: var(--x-hover-faint);
+
+  /* engagement accents (x palette 500s) */
+  --color-x-green: #00ba7c;
+  --color-x-pink: #f91880;
+  --color-x-red: #f4212e;
+  --color-x-purple: #7856ff;
+  --color-x-yellow: #ffd400;
+
+  /* type scale (px values from X's calc(N / root * 1rem)) */
+  --text-title1: 34px;
+  --text-title1--line-height: 40px;
+  --text-title2: 30px;
+  --text-title2--line-height: 36px;
+  --text-title3: 26px;
+  --text-title3--line-height: 32px;
+  --text-title4: 23px;
+  --text-title4--line-height: 28px;
+  --text-headline1: 20px;
+  --text-headline1--line-height: 24px;
+  --text-headline2: 17px;
+  --text-headline2--line-height: 20px;
+  --text-body: 15px;
+  --text-body--line-height: 20px;
+  --text-subtext1: 14px;
+  --text-subtext1--line-height: 16px;
+  --text-subtext2: 13px;
+  --text-subtext2--line-height: 16px;
+  --text-subtext3: 11px;
+  --text-subtext3--line-height: 12px;
+
+  /* radii: radius-md/lg = 16/24 * --x-radius-m */
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xs: 4px;
+
+  --shadow-popup: var(--x-shadow-popup);
+  --spacing-horizontal: 16px;
+}
+
+@layer base {
+  html,
+  body {
+    background-color: var(--x-bg-primary);
+    color: var(--x-fg-primary);
+  }
+  body {
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 20px;
+    -webkit-font-smoothing: antialiased;
+    overflow-y: scroll;
+  }
+  button {
+    cursor: pointer;
+  }
+  ::selection {
+    background: #1d9bf066;
+  }
+}
+
+/* X component primitives (mirroring .x-button / .x-middot-group / .x-engagement-pill) */
+@layer components {
+  .x-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-radius: 9999px;
+    font-weight: 700;
+    user-select: none;
+    transition: background-color 0.15s, color 0.15s;
+    outline-color: var(--x-fg-primary);
+  }
+  .x-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+  .x-middot-group {
+    display: flex;
+    align-items: center;
+    flex-shrink: 1;
+    min-width: 0;
+  }
+  .x-middot-group > :not(:first-child)::before {
+    content: '·';
+    padding-inline: 4px;
+    flex-shrink: 0;
+  }
+  .x-engagement-pill {
+    position: relative;
+    isolation: isolate;
+    display: inline-flex;
+    align-items: center;
+    border-radius: 9999px;
+  }
+  .x-engagement-pill > .x-pill-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: 9999px;
+    opacity: 0;
+    scale: 0.6;
+    transition: opacity 0.2s, scale 0.2s;
+  }
+  .group:hover .x-engagement-pill > .x-pill-bg {
+    opacity: 1;
+    scale: 1;
+  }
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@keyframes x-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes x-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.98);
+  }
+}
+.animate-x-in {
+  animation: x-fade-in 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+}
